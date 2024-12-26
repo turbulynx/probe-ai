@@ -1,0 +1,63 @@
+# Python
+*.pyc
+*.pyo
+*.pyd
+__pycache__
+*.so
+*.egg
+*.egg-info
+dist
+build
+*.log
+*.pot
+*.py[cod]
+*.pyo
+
+# PyCharm
+.idea/
+*.iml
+
+# Virtual Environment
+venv/
+env/
+.venv/
+.env/
+
+# Jupyter Notebook
+.ipynb_checkpoints/
+
+# MacOS
+.DS_Store
+
+# Windows
+Thumbs.db
+
+# Python coverage
+.coverage
+coverage.xml
+*.cover
+
+# Pytest
+.cache
+
+# mypy
+.mypy_cache/
+
+# VS Code
+.vscode/
+
+# Docker
+docker-compose.override.yml
+docker-compose.*.yml
+
+# Sphinx documentation
+docs/_build/
+
+# PyInstaller
+*.spec
+
+# JetBrains Rider
+.idea/
+
+# Pycharm's local history
+.localhistory/
