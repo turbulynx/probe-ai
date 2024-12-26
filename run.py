@@ -2,7 +2,7 @@ from typing import List
 
 from flask import Flask, request, jsonify
 from flasgger import Swagger, swag_from
-from search import TavilySearch, Search, SerpApiSearch, Summary, SearchFactory
+from search import TavilySearch, Search, SerpApiSearch, SearchResult, SearchFactory
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -109,8 +109,8 @@ def search_person():
     if not name:
         return jsonify({"error": "Name parameter is required"}), 400
 
-    results: List[Summary] = SearchFactory().get_search_instance(search_tool).get_results(name, tags, domains, max_results)
-    results_dict = [result.to_dict() for result in results]
+    results: List[SearchResult] = SearchFactory().get_search_instance(search_tool).get_results(name, tags, domains, max_results)
+    results_dict = [result for result in results]
     return jsonify(results_dict), 200
 
 
@@ -124,7 +124,7 @@ def search_person():
                 'type': 'array',
                 'items': {
                     'type': 'string',
-                    'example': 'linkedin.com'  # Example of what a source might look like
+                    'example': 'linkedin.com'
                 }
             }
         },
@@ -157,6 +157,6 @@ def swagger_ui():
     return {"status": "UP"}
 
 if __name__ == "__main__":
-    swagger.config['specs_route'] = '/'
+    swagger.config['specs_route'] = '/apidocs'
     app.run(debug=True)
 

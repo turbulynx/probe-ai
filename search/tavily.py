@@ -1,13 +1,13 @@
 from typing import List
 from langchain_community.tools import TavilySearchResults
-from search import Search,Summary
+from search import Search,SearchResult
 
 
 class TavilySearch(Search):
     def supported_domain(self) -> list:
         return ["linkedin.com", "facebook.com"]
 
-    def get_results(self, name: str, tags: list, domains: list = None, max_results: int=20) -> List[Summary]:
+    def get_results(self, name: str, tags: list, domains: list = None, max_results: int=20) -> List[SearchResult]:
         super().get_results(name, tags, domains)
         """Search for a person and return URLs from specific domains with additional tags."""
         tags_str = ", ".join(tags) if tags else "No specific tags"

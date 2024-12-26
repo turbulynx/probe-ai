@@ -1,7 +1,7 @@
 from typing import List
 from pydantic import BaseModel, Field
 
-class Summary(BaseModel):
+class SearchResult(BaseModel):
     url: str = Field(description="URL")
     content: str = Field(description="Content description")
 
@@ -15,7 +15,7 @@ class Search:
     def supported_domain(self) -> list:
         pass
 
-    def get_results(self, name: str, tags: list, sources: list = None, max_results:int=20) -> List[Summary]:
+    def get_results(self, name: str, tags: list, sources: list = None, max_results:int=20) -> List[SearchResult]:
         if not all(source in self.supported_domain() for source in sources):
             raise ValueError("All Domains not supported")
         self.sources = sources or self.supported_domain()

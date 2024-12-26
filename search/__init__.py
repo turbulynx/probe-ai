@@ -1,4 +1,4 @@
-from .base import Search, Summary
+from .base import Search, SearchResult
 from .tavily import TavilySearch
 from .serpapi import SerpApiSearch
 
