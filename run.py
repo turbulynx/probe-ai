@@ -4,9 +4,12 @@ from flask import Flask, request, jsonify
 from flasgger import Swagger, swag_from
 from search import TavilySearch, Search, SerpApiSearch, SearchResult, SearchFactory
 from dotenv import load_dotenv
+from scrape import SeleniumLinkedinScraper
 
 load_dotenv()
 app = Flask(__name__)
+print(SeleniumLinkedinScraper().scrape_linkedin("https://www.linkedin.com/in/probe-ai"))
+
 swagger = Swagger(app)
 swagger.config['definitions'] = {
     'Summary': {
